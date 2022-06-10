@@ -1,0 +1,21 @@
+slack:
+  bot_token: !REQUIRED-ENV SLACK_BOT_TOKEN
+  socket_token: !REQUIRED-ENV SLACK_SOCKET_TOKEN
+
+ipc:
+  host: '127.0.0.1'
+  port: 26000
+
+logging:
+  enabled: true
+  levels:
+    newbial: info
+
+modules:
+  path: 'newbial/modules'
+  list:
+    core:
+      config:
+        command_prefixes: ['!']
+    util:
+      address: ['127.0.0.1', 26001]

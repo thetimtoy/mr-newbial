@@ -1,0 +1,43 @@
+name: lint
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        py-version: ['3.7', '3.x']
+        name: ['type-check', 'style']
+        include:
+          - name: type-check
+            tool: Pyright
+            script: pyright --verbose
+          - name: style
+            tool: Black
+            script: black --check -v newbial
+
+    name: ${{ matrix.py-version }} ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up CPython v${{ matrix.py-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.py-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install poetry
+          poetry install
+          poetry run python setup.py install
+      
+      - name: Run ${{ matrix.tool }}
+        run: poetry run ${{ matrix.script }}
+
+        

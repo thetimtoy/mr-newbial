@@ -1,0 +1,14 @@
+# Python virtual environment
+.venv
+
+# Environment variables
+.env
+
+# Some MacOS file
+.DS_Store
+
+# Python files
+*.pyc
+
+# Config file
+localconfig.yml

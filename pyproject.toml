@@ -1,0 +1,29 @@
+[tool.black]
+line-length = 90
+target-version = ['py310']
+skip-string-normalization = true
+
+[tool.pyright]
+include = ['newbial/**']
+pythonVersion = "3.10"
+
+[tool.poetry]
+name = "mr-newbial"
+version = "0.1.0"
+description = "A slack bot"
+authors = ["Tinoy Thomas <tinoytpm1@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+slack-bolt = "^1.13.2"
+aiohttp = "^3.8.1"
+PyYAML = "^6.0"
+python-dotenv = "^0.20.0"
+coloredlogs = "^15.0.1"
+py-ipc = {git = "https://github.com/thetimtoy/py-ipc"}
+
+[tool.poetry.dev-dependencies]
+black = "^22.3.0"
+pyright = "^1.1.246"
+typing-extensions = "^4.2.0"

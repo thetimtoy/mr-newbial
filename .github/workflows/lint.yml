@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        py-version: ['3.7', '3.x']
+        py-version: ['3.10', '3.x']
         name: ['type-check', 'style']
         include:
           - name: type-check
